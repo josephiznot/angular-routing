@@ -1,0 +1,13 @@
+<input placeholder="product search" [(ngModel)]='search' (keyup)="queryUrl()" />
+<button (click)="loadData()">Get Data</button>
+<div *ngFor="let product of products">
+  <a (click)="selectProduct(product)" routerLinkActive="active">{{product.product_name}}</a>
+</div>
+<div *ngIf="this.selected_product?.product_name; else promptSelection">
+  <h2>Selected Product:</h2>
+  <h3>{{this.selected_product.product_name}}</h3>
+  <h2>${{this.selected_product.price}}</h2>
+</div>
+<ng-template #promptSelection>
+  <h6>Select a product...</h6>
+</ng-template>
